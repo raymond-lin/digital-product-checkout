@@ -8,12 +8,28 @@ This project provides a serverless checkout system for digital products using AW
 - **S3** for static frontend hosting and digital product storage  
 - **SES** for sending payment confirmation emails  
 - **DynamoDB** for order transaction records  
-- **PayPal API** for payment processing  
+- **PayPal API** for payment processing
+
+## How This Project Uses AWS Lambda
+AWS Lambda functions serve as the backend engine for the entire checkout workflow. Two API Gateway routes (POST /create and POST /capture) trigger the Lambda handler. Lambda functions:
+
+- Create PayPal orders and return approval URLs
+- Capture PayPal orders and validate transactions
+- Record transactions in DynamoDB
+- Generate secure download links from S3
+- Send confirmation emails with SES
+
+All business logic, third-party API calls, and communication with other AWS services happen inside the Lambda environment, enabling a fully serverless, scalable solution without managing servers.
+
+## API Gateway Routes
+
+- POST /create: Calls Lambda to create a PayPal order and return an approval URL.
+- POST /capture: Calls Lambda to capture the PayPal order, record the transaction, send confirmation email, and return download link.
 
 ## Architecture
 
 ```
-User -> S3 Frontend -> API Gateway -> Lambda (checkout logic) -> DynamoDB, SES, PayPal
+User -> S3 Frontend -> API Gateway -> Lambda -> DynamoDB, SES, PayPal
 ```
 
 ## Key Features

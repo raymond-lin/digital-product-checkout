@@ -27,7 +27,6 @@ User -> S3 Frontend -> API Gateway -> Lambda (checkout logic) -> DynamoDB, SES, 
 ## Code Structure
 
 - `lambda/index.mjs`: Main Lambda handler for order creation and capture  
-- `lambda/programCatalog.mjs`: Configuration file listing product details (price, SKU, S3 key)  
 - `lambda/paypal.mjs`: PayPal API integration helper functions  
 - `lambda/dbHandler.mjs`: DynamoDB transaction recording  
 - `lambda/emailNotifier.mjs`: SES email sending logic  

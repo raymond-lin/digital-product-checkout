@@ -1,0 +1,62 @@
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 50px;
+  background-color: #f8f9fa;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+.download-btn {
+  margin-top: 20px;
+}
+
+.buy-button {
+  position: relative;
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #0070ba;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buy-button .spinner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border: 3px solid transparent;
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  visibility: hidden;
+}
+
+.buy-button.loading .button-text {
+  visibility: hidden;
+}
+
+.buy-button.loading .spinner {
+  visibility: visible;
+}
+
+.buy-button:hover {
+  background-color: #005c99;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
